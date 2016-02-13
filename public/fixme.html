@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman Game</title>
+	<link rel="stylesheet" type="text/css" href="/css/hangman.css">
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="js/function.js"></script>
+	<script src="js/specialEffectsFunctions.js"></script>
+	<script> 
+		function stopRKey(evt) { 
+		  var evt = (evt) ? evt : ((event) ? event : null); 
+		  var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+		  if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+		} 
+		document.onkeypress = stopRKey; 
+	</script>
+</head>
+<body>
+	<div class="topStuff">
+		<div id="wofIMG" class="image-blurred-edge">
+		</div>
+		<div id="outsideCurrentWordBox">
+			<div id="currentWordBox">
+				<div id="topLeftBox"></div>
+				<div id="topRightBox"></div>
+				<div id="bottomLeftBox" class="borderBoxes topRowLetters"></div>
+				<div id="bottomRightBox" class="borderBoxes"></div>
+				<div id="guessLetter0" class="guessLetterBoxes sideRowLetters topRowLetters"></div>
+				<div id="guessLetter1" class="guessLetterBoxes topRowLetters"></div>
+				<div id="guessLetter2" class="guessLetterBoxes topRowLetters"></div>
+				<div id="guessLetter3" class="guessLetterBoxes topRowLetters"></div>
+				<div id="guessLetter4" class="guessLetterBoxes topRowLetters"></div>
+				<div id="guessLetter5" class="guessLetterBoxes topRowLetters"></div>
+				<div id="guessLetter6" class="guessLetterBoxes topRowLetters"></div>
+				<div id="guessLetter7" class="guessLetterBoxes topRowLetters"></div>
+				<div id="guessLetter8" class="guessLetterBoxes topRowLetters"></div>
+				<div id="guessLetter9" class="guessLetterBoxes topRowLetters"></div>
+				<div id="guessLetter10" class="guessLetterBoxes topRowLetters"></div>
+				<div id="guessLetter11" class="guessLetterBoxes topRowLetters"></div>
+				<div id="guessLetter12" class="guessLetterBoxes breakHere sideRowLetters"></div>
+				<div id="guessLetter13" class="guessLetterBoxes"></div>
+				<div id="guessLetter14" class="guessLetterBoxes"></div>
+				<div id="guessLetter15" class="guessLetterBoxes"></div>
+				<div id="guessLetter16" class="guessLetterBoxes"></div>
+				<div id="guessLetter17" class="guessLetterBoxes"></div>
+				<div id="guessLetter18" class="guessLetterBoxes"></div>
+				<div id="guessLetter19" class="guessLetterBoxes"></div>
+				<div id="guessLetter20" class="guessLetterBoxes"></div>
+				<div id="guessLetter21" class="guessLetterBoxes"></div>
+				<div id="guessLetter22" class="guessLetterBoxes"></div>
+				<div id="guessLetter23" class="guessLetterBoxes"></div>
+				<div id="guessLetter24" class="guessLetterBoxes"></div>
+				<div id="guessLetter25" class="guessLetterBoxes"></div>
+				<div id="guessLetter26" class="guessLetterBoxes breakHere sideRowLetters"></div>
+				<div id="guessLetter27" class="guessLetterBoxes"></div>
+				<div id="guessLetter28" class="guessLetterBoxes"></div>
+				<div id="guessLetter29" class="guessLetterBoxes"></div>
+				<div id="guessLetter30" class="guessLetterBoxes"></div>
+				<div id="guessLetter31" class="guessLetterBoxes"></div>
+				<div id="guessLetter32" class="guessLetterBoxes"></div>
+				<div id="guessLetter33" class="guessLetterBoxes"></div>
+				<div id="guessLetter34" class="guessLetterBoxes"></div>
+				<div id="guessLetter35" class="guessLetterBoxes"></div>
+				<div id="guessLetter36" class="guessLetterBoxes"></div>
+				<div id="guessLetter37" class="guessLetterBoxes"></div>
+				<div id="guessLetter38" class="guessLetterBoxes"></div>
+				<div id="guessLetter39" class="guessLetterBoxes"></div>
+				<div class="invisible sideRowLetters"></div>
+				<div id="guessLetter40" class="guessLetterBoxes "></div>
+				<div id="guessLetter41" class="guessLetterBoxes"></div>
+				<div id="guessLetter42" class="guessLetterBoxes"></div>
+				<div id="guessLetter43" class="guessLetterBoxes"></div>
+				<div id="guessLetter44" class="guessLetterBoxes"></div>
+				<div id="guessLetter45" class="guessLetterBoxes"></div>
+				<div id="guessLetter46" class="guessLetterBoxes"></div>
+				<div id="guessLetter47" class="guessLetterBoxes"></div>
+				<div id="guessLetter48" class="guessLetterBoxes"></div>
+				<div id="guessLetter49" class="guessLetterBoxes"></div>
+				<div id="guessLetter50" class="guessLetterBoxes"></div>
+				<div id="guessLetter51" class="guessLetterBoxes"></div>
+			</div>
+		</div>
+	</div>
+	<div id="starBox">
+		<div class="stars"></div>
+	    <div class="twinkling"></div>
+	    <div class="clouds"></div>
+	</div>
+	<div id="mainBox">
+		<div id="wheelBox">
+			<img src="/img/wofWheel90.png" class="wofWheel">
+		</div>
+		<div class="arrow-left"></div>
+		<div id="wheelStopValue"></div>
+		<div id="formDiv" class="grayscale">
+			<div id="vowelTitle" class="vowelStuff grayscale"><p>Guess a Vowel!</p></div>
+			<form autocomplete="off">
+				<input id="vowelBox" class="vowelStuff grayscale" type="text"></input>
+				<input id="vowelButton" class="vowelStuff" type="button"></input>
+			</form>
+			<div id="inputTitle" class="inputStuff"><p>Guess a Letter!</p></div>
+			<form autocomplete="off">
+				<input id="inputBox" class="inputStuff" type="text"></input>
+				<input id="inputButton" class="inputStuff" type="button"></input>
+			</form>
+		</div>
+		<div id="formDivGray"></div>
+		<div id="solveForm">
+			<div id="solveTitle" class="solveStuff"><p>Solve Puzzle!</p></div>
+			<form autocomplete="off">
+				<input id="solveBox" class="solveStuff" type="text"></input>
+				<input id="solveButton" class="solveStuff" type="button"></input>
+			</form>
+		</div>
+		<div id="solveFormGray"></div>
+		<div id="currentMoneyBox"></div>
+		<div id="statusBox"></div>
+		<div id="boxesBox">
+			<div id="numIncorrectAnswerBox"></div>
+			<div id="incorrectGuessBox"></div>
+		</div>
+		<button id="rulesButton">GAME RULES</button>
+	</div>
+
+
+
+	<div class="overlayWin winScreen"></div>
+	<div id="victoryMessage" class="overlay-messageWin winScreen">
+    	<p>You Win!</p>
+    	<button class="startButton">New Game</button>
+	</div>
+
+
+
+	<div class="overlayLose loseScreen" ></div>
+	<div id="loseMessage" class="overlay-messageLose loseScreen">
+    	<p>You Lose!</p>
+    	<button class="startButton">New Game</button>
+	</div>
+
+
+
+	<div id="introOverlay" class="overlay startScreen"></div>
+	<video id="introVid" class="overlay-message startScreen" autoplay="autoplay">
+    	<source src="img/wofVideoIntro.mp4">
+	</video>
+	<div id="beginGameBox" class="startScreen">
+		<button class="startButton">New Game</button>
+	</div>
+
+
+	<div id="introOverlay" class="overlayRules rulesDiv"></div>
+	<div id="rulesText" class="overlay-messageRules rulesDiv wordwrap">
+		<h1>Wheel of Fortune! Rules</h1>
+		<ol>
+			<li>Click on the game wheel to spin it.</li>
+			<li>If the wheel stops on a dollar amount, you must guess a letter. If that letter is in the word, you will win the selected dollar amount times the frequencey of your guessed letter in the word. If your guessed letter is not in the word, you gain nothing and must spin again.</li>
+			<li>If the wheel stops on 'Buy a Vowel', you must guess a vowel. Vowels cost $250. If that vowel is in the word, you will lose $250 times the frequency of your guessed vowel in the word. If your guessed vowel is not in the word, you lose $250 and must spin again. </li>
+			<li>If the wheel stops on "Free Spin", you must spin again. </li>
+			<li>If the wheel stops on "Lose a Turn", you must spin again. </li>
+			<li>If the wheel stops on "Bankrupt!", you lose all your theretofore won money. If you had less than $0 when you landed on "Bankrupt!", you will still have the same (negative) amount.</li>
+			<li>Any time after spinning the wheel, you may elect to "Solve the Puzzle" instead of guessing a letter or vowel. If your guessed solution is correct, you win the game! If not, you lose $1000 and must spin again.</li>
+			<li>If you guess all the letters in the word you win the game!</li>
+			<li>If you incorrectly guess more than 4 letters, you lose the game!</li>
+			<li>If at any point your total dollar amount is -$1000 or less, you lose the game!</li>
+			<li>Good look, and have some wholesome fun! And always remember, you gotta spin it to win it!</li>
+		</ol>
+	</div>
+	
+
+	<script>
+		$(document).ready(function(){
+			'use strict';
+			
+			$(".rulesDiv").hide()
+			$(".loseScreen").hide();
+			$(".winScreen").hide();
+			$("#formDivGray").hide();
+			$("#solveFormGray").hide();
+			$(".vowelStuff").hide();
+			$(".inputStuff").hide();
+			$(".solveStuff").hide();
+			$("#currentMoneyBox").text("$0");
+
+
+			$(".wofWheel").click(function(){
+				clickWheel();
+			});
+			$("#inputButton").click(function(){
+				inputClick();
+			});
+			$("#vowelButton").click(function(){	
+				vowelClick();
+			});
+			$("#solveButton").click(function(){
+				solveButton();
+			});		
+	   		$("#rulesButton").click(function(){
+		   		$(".rulesDiv").show();
+		   	}); 
+		   	$(".rulesDiv").click(function(){
+				$(".rulesDiv").hide();
+		   	});
+		   	$('#formDiv').mouseenter(function(){
+		   		$("#solveFormGray").show();
+		   	});
+		   	$('#formDiv').mouseleave(function(){
+		   		$("#solveFormGray").hide();
+		   	});
+		    $('#solveForm').mouseenter(function(){
+		   		$("#formDivGray").show();
+		   	})
+	    	$('#solveForm').mouseleave(function(){
+		   		$("#formDivGray").hide();
+		   	})
+		    $(".startButton").click(function(){
+		    	randomWord();	
+		    	startGame();
+	    	})
+		});
+	</script>
+</body>
+</html>
