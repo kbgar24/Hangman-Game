@@ -11,18 +11,18 @@
 
 	function pickWord(){
         console.log(currentWord);
+        if (typeof currentWord === 'undefined'){
+        	currentWord = "antidisestablishmentarianism";
+        }
         currentWordUpCase = currentWord.toUpperCase();
 		currentWordArray = currentWordUpCase.split("");
-		console.log(currentWordArray);   
 	};
 	function setupGuessLetterBoxes(){
-			console.log(currentWordArray);
-			currentWordArray.forEach(function (element,index){
-				var selectGuessLetterDiv = "#guessLetter" + index;
-				$(selectGuessLetterDiv).css("background-color","white");
-			});
-		};
-	console.log(currentWordArray);
+		currentWordArray.forEach(function (element,index){
+			var selectGuessLetterDiv = "#guessLetter" + index;
+			$(selectGuessLetterDiv).css("background-color","white");
+		});
+	};
 	var correctGuesses = [];
 	var incorrectGuesses = [];
 	var guessedWordArray = [];
@@ -31,8 +31,8 @@
     var spinValue;
     
     function add(a,b){
-			return (a+b);
-		};
+		return (a+b);
+	};
     
     var currentMoney = currentMoneyArray.reduce(add,0);
 
@@ -143,7 +143,6 @@
        	} 
     };
 
-
     function isLetterinWord(currentLetter){
 		if (currentLetter) {
 			if (currentWordArray.indexOf(currentLetter) == -1){
@@ -155,7 +154,6 @@
 		}
 	};
 
-
 	function isVowelinWord(currentVowel){
 		if (currentVowel) {
 			if (currentWordArray.indexOf(currentVowel) == -1){
@@ -166,7 +164,6 @@
 			}
 		}
 	};
-
 
 
 	function findCurrentLetterInWord(currentWordArray, currentLetter){
@@ -183,20 +180,26 @@
 	};
 
 
-
 	function isGameWon(){
-		if ($(guessedWordArray).not(currentWordArray).length === 0 && $(currentWordArray).not(guessedWordArray).length === 0) {
-			console.log("Game is Won!");
+		if (($(guessedWordArray).not(currentWordArray).length === 0 && $(currentWordArray).not(guessedWordArray).length === 0) 
+			|| ($("#solveBox").val() == currentWord)) {
+			currentMoneyArray.push(1000);
+			currentMoney = currentMoneyArray.reduce(add,0);
+			$("#currentMoneyBox").text("$" + currentMoney);
+			$("#currentMoneyBox").css("color","gold");
 			$(".winScreen").show();
+			$("#victoryP").text("You Win $" + currentMoney + "!");
 			var audioElement = document.createElement('audio');
 				audioElement.setAttribute('src', '/img/sounds/winCheer.wav');
 				audioElement.setAttribute('autoplay', 'autoplay');
 		}
-		else if ($("#solveBox").val() == currentWord){
-			console.log("Game is Won!")
-			$(".winScreen").show();
-		}
-		else {console.log("Game is not yet won.");}
+		// else if ($("#solveBox").val() == currentWord){
+		// 	$(".winScreen").show();
+		// 	var audioElement = document.createElement('audio');
+		// 		audioElement.setAttribute('src', '/img/sounds/winCheer.wav');
+		// 		audioElement.setAttribute('autoplay', 'autoplay');
+		// }
+		// else {console.log("Game is not yet won.");}
 	};
 
 
@@ -334,26 +337,33 @@
 
 
 	function startGame(){
+		$("#solveBox").val("");
 		$("#statusBox").text("");
+    	$(".wofWheel").css("transition","transform 0s");
+		$(".wofWheel").css("transform","");
     	$("#numIncorrectAnswerBox").text("");
-    	$("#incorrectGuessBox").text("")
-   		$("#currentMoneyBox").text("$0")
+    	$("#incorrectGuessBox").text("");
+   		$("#currentMoneyBox").text("$0");
+   		$("#currentMoneyBox").css("color","gold");
     	$(".loseScreen").hide();
     	$(".winScreen").hide();
     	$(".startScreen").hide();
 		$(".guessLetterBoxes").css("background-color","green");
 		$(".guessLetterBoxes").text("");
 		$("#wheelStopValue").text("");
-		var audioElement = document.createElement('audio');
-					audioElement.setAttribute('src', '/img/sounds/newCategory.wav');
-					audioElement.setAttribute('autoplay', 'autoplay');
+		$("#statusBox").text("Let the game begin!");
 		currentMoneyArray = [];
 		correctGuesses = [];
 		incorrectGuesses = [];
 		guessedWordArray = [];
 		currentMoney = 0;
-		pickWord();
-		setupGuessLetterBoxes();
-		$("#statusBox").text("Let the game begin!");
+		setTimeout(function(){
+			pickWord();
+			setupGuessLetterBoxes();
+			var audioElement = document.createElement('audio');
+					audioElement.setAttribute('src', '/img/sounds/newCategory.wav');
+					audioElement.setAttribute('autoplay', 'autoplay');
+		},2000);
+		
 	};
 

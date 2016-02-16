@@ -3,7 +3,6 @@
 	function clickWheel() {
 		$("#wheelStopValue").text("");
 		$("#statusBox").text("");
-		console.log(guessedWordArray);
 		var audioElement = document.createElement('audio');
 			audioElement.setAttribute('src', '/img/sounds/wheelCut.wav');
 			audioElement.setAttribute('autoplay', 'autoplay');
@@ -42,7 +41,6 @@
 
     	var wheelDegree = -currentDegSpin;
 	    var rotateWheel = "rotate(" + wheelDegree + "deg)";
-	    console.log(rotateWheel);
 	    $(".wofWheel").css("transform",rotateWheel);
 	 
 	    function findSpinValue(){
@@ -59,13 +57,12 @@
 		    	 	if (currentMoney > 0) {
 		    	 		$("#currentMoneyBox").text("$0");
 		    	 	}
-		    	 	setTimeout(function(){
-			    	 	$(".inputStuff").hide();
-			    	 	$("#inputBox").val(null);
-			    	 	$(".solveStuff").hide();
-			    	 	$(".wofWheel").css("transition","transform 0s");
-						$(".wofWheel").css("transform","");
-					},44000);
+		    	 	$(".inputStuff").hide();
+		    	 	$("#inputBox").val(null);
+		    	 	$(".solveStuff").hide();
+		    	 	$(".wofWheel").css("transition","transform 0s");
+					$(".wofWheel").css("transform","");
+
 		    	 }
 		    	 if(spinValue == "Buy a Vowel!"){
 		    	 	$(".vowelStuff").show();
@@ -77,19 +74,11 @@
 		    	 	$(".inputStuff").hide();
 					$(".solveStuff").hide();
 					$("#inputBox").val(null);
-					setTimeout(function(){
-			    	 	$(".wofWheel").css("transition","transform 0s");
-						$(".wofWheel").css("transform","");
-					},6400);
-		    	 }
+		    	}
 		    	if(spinValue == "Lose a Turn!") {
 		    	 	$(".inputStuff").hide();
 					$(".solveStuff").hide();
 					$("#inputBox").val(null);
-					setTimeout(function(){
-			    	 	$(".wofWheel").css("transition","transform 0s");
-						$(".wofWheel").css("transform","");
-					},6400);
 		    	}
 		    }
 		    else if (!isNaN(spinValue)) {
@@ -102,45 +91,40 @@
 	};
 
 	function solveButton(){
+		$(".wofWheel").css("transition","transform 0s");
+		$(".wofWheel").css("transform","");
 		$(".inputStuff").hide();
 		$(".solveStuff").hide();
 		$(".vowelStuff").hide();
-		console.log($("#solveBox").val());
-			console.log(currentWord);
-			if ($("#solveBox").val() == currentWord){
-				isGameWon();
+		if ($("#solveBox").val() == currentWord){
+			isGameWon();
+		}
+		else {
+			var audioElement = document.createElement('audio');
+				audioElement.setAttribute('src', '/img/sounds/wrongBuzzer.wav');
+				audioElement.setAttribute('autoplay', 'autoplay')
+			$("#statusBox").text("Sorry, " + $("#solveBox").val() + " is not the correct word! You lose $1000!");
+			$(".solveStuff").val(null);
+			currentMoneyArray.push(-1000);
+			currentMoney = currentMoneyArray.reduce(add,0);
+			if (currentMoney < 0) {
+				$("#currentMoneyBox").text("-$" + (-1 * currentMoney));
+				$("#currentMoneyBox").css("color","red");
 			}
 			else {
-				var audioElement = document.createElement('audio');
-					audioElement.setAttribute('src', '/img/sounds/wrongBuzzer.wav');
-					audioElement.setAttribute('autoplay', 'autoplay')
-				$("#statusBox").text("Sorry, " + $("#solveBox").val() + " is not the correct word! You lose $1000!");
-				$(".solveStuff").val(null);
-				console.log(currentMoney);
-				currentMoneyArray.push(-1000);
-				currentMoney = currentMoneyArray.reduce(add,0);
-				console.log(currentMoney);
-				if (currentMoney < 0) {
-					$("#currentMoneyBox").text("-$" + (-1 * currentMoney));
-					$("#currentMoneyBox").css("color","red");
-				}
-				else {
-					$("#currentMoneyBox").text("$" + currentMoney);
-					$("#currentMoneyBox").css("color","gold");
-				}
-			isGameLost();
+				$("#currentMoneyBox").text("$" + currentMoney);
+				$("#currentMoneyBox").css("color","gold");
 			}
+		isGameLost();
+		}
 	};
 
 
 	function inputClick(){
-		// console.log($("#inputBox").val());
 			$(".inputStuff").hide();
-			// $("#inputBox").val(null);
 			$(".solveStuff").hide();
 			var currentLetter = isInputValid();
 			var whereIsCurrentLetter = findCurrentLetterInWord(currentWordArray, currentLetter);
-			// findCurrentLetterInWord(currentWordArray, currentLetter);
 			if (!isLetterinWord(currentLetter) && currentLetter) {
 				if (addIncorrectGuess(currentLetter)) {
 					var audioElement = document.createElement('audio');
@@ -148,14 +132,12 @@
 						audioElement.setAttribute('autoplay', 'autoplay');
 					$("#statusBox").text("Sorry, the letter '" + currentLetter + "' is not in the word.");
 					$("#incorrectGuessBox").text(incorrectGuesses);
-
 					$("#numIncorrectAnswerBox").text("Total Number of Incorrect Guesses: " + incorrectGuesses.length);
 				}
 				else { 
 					$("#statusBox").text("You've already guessed the letter '" + currentLetter + "'.");
 				}
 			}
-			
 			if (isLetterinWord(currentLetter)) { 
 				if (addCorrectGuess(currentLetter)) {
 					if (whereIsCurrentLetter.length > 1) {
@@ -163,11 +145,7 @@
 							audioElement.setAttribute('src', '/img/sounds/applause.wav');
 							audioElement.setAttribute('autoplay', 'autoplay');
 						$("#statusBox").html("Congrats! There are " + whereIsCurrentLetter.length + " " +currentLetter + "'s.");
-							console.log(whereIsCurrentLetter);
-							console.log(spinValue);
-							console.log((whereIsCurrentLetter.length*spinValue));
 							currentMoneyArray.push((whereIsCurrentLetter.length*spinValue));
-							console.log(currentMoneyArray);
 							currentMoney = currentMoneyArray.reduce(add,0);
 							if (currentMoney < 0) {
 								$("#currentMoneyBox").text("-$" + (-1 * currentMoney));
@@ -177,12 +155,8 @@
 								$("#currentMoneyBox").text("$" + currentMoney);
 								$("#currentMoneyBox").css("color","gold");
 							}
-
-						console.log("You've won $" + currentMoney);
 						if (whereIsCurrentLetter){
 							console.log("The letter '" + currentLetter + "' is at position(s): "  + whereIsCurrentLetter);
-							// guessedWordArray = [];
-							// guessedWordArray
 						}
 					}
 					else {
@@ -190,11 +164,7 @@
 							audioElement.setAttribute('src', '/img/sounds/applause.wav');
 							audioElement.setAttribute('autoplay', 'autoplay');
 						$("#statusBox").html("Congrats! There is one " + currentLetter + ".");
-							console.log(whereIsCurrentLetter);
-							console.log(spinValue);
-							console.log((whereIsCurrentLetter.length*spinValue));
 							currentMoneyArray.push((whereIsCurrentLetter.length*spinValue));
-							console.log(currentMoneyArray);
 							currentMoney = currentMoneyArray.reduce(add,0);
 							if (currentMoney < 0) {
 								$("#currentMoneyBox").text("-$" + (-1 * currentMoney));
@@ -204,17 +174,13 @@
 								$("#currentMoneyBox").text("$" + currentMoney);
 								$("#currentMoneyBox").css("color","gold");
 							}
-
-						console.log("You've won $" + currentMoney);
 						if (whereIsCurrentLetter){
 							console.log("The letter '" + currentLetter + "' is at position(s): "  + whereIsCurrentLetter);
-							// guessedWordArray = [];
-							// guessedWordArray;
 						}
 					}
 				}
 				else {
-					$("#statusBox").html("You've already guessed the letter '" + currentLetter);
+					$("#statusBox").html("You've already guessed the letter '" + currentLetter + "'.");
 				}
 			}
 		updateGuessLetterBoxes1(whereIsCurrentLetter,guessedWordArray,currentLetter);
@@ -229,98 +195,76 @@
 		isGameLost();
 
 	};
+	
 	function vowelClick(){
-	// console.log($("#inputBox").val());
-			$(".vowelStuff").hide();
-			// $("#inputBox").val(null);
-			$(".solveStuff").hide();
-			var currentVowel = isVowelValid();
-			var whereIsCurrentVowel = findCurrentVowelInWord(currentWordArray, currentVowel);
-			// findCurrentLetterInWord(currentWordArray, currentLetter);
-			if (!isVowelinWord(currentVowel) && currentVowel) {
-				if (addIncorrectGuess(currentVowel)) {
-					var audioElement = document.createElement('audio');
-						audioElement.setAttribute('src', '/img/sounds/wrongBuzzer.wav');
-						audioElement.setAttribute('autoplay', 'autoplay');
-					$("#statusBox").text("Sorry, the vowel '" + currentVowel + "' is not in the word.");
-					$("#incorrectGuessBox").text(incorrectGuesses);
-
-					$("#numIncorrectAnswerBox").text("Total Number of Incorrect Guesses: " + incorrectGuesses.length);
-				}
-				else { 
-					$("#statusBox").text("You've already guessed the vowel '" + currentVowel + "'.");
-				}
+		$(".vowelStuff").hide();
+		$(".solveStuff").hide();
+		var currentVowel = isVowelValid();
+		var whereIsCurrentVowel = findCurrentVowelInWord(currentWordArray, currentVowel);
+		if (!isVowelinWord(currentVowel) && currentVowel) {
+			if (addIncorrectGuess(currentVowel)) {
+				var audioElement = document.createElement('audio');
+					audioElement.setAttribute('src', '/img/sounds/wrongBuzzer.wav');
+					audioElement.setAttribute('autoplay', 'autoplay');
+				$("#statusBox").text("Sorry, the vowel '" + currentVowel + "' is not in the word.");
+				$("#incorrectGuessBox").text(incorrectGuesses);
+				$("#numIncorrectAnswerBox").text("Total Number of Incorrect Guesses: " + incorrectGuesses.length);
 			}
-			
-			if (isVowelinWord(currentVowel)) { 
-				if (addVowelCorrectGuess(currentVowel)) {
-					if (whereIsCurrentVowel.length > 1) {
-						var audioElement = document.createElement('audio');
-							audioElement.setAttribute('src', '/img/sounds/applause.wav');
-							audioElement.setAttribute('autoplay', 'autoplay');
-						$("#statusBox").html("Congrats! There are " + whereIsCurrentVowel.length + " " +currentVowel + "'s.");
-							console.log(whereIsCurrentVowel);
-							console.log(whereIsCurrentVowel.length*(-250));
-							currentMoneyArray.push((whereIsCurrentVowel.length*(-250)));
-							console.log(currentMoneyArray);
-							currentMoney = currentMoneyArray.reduce(add,0);
-							if (currentMoney < 0) {
-								$("#currentMoneyBox").text("-$" + (-1 * currentMoney));
-								$("#currentMoneyBox").css("color","red");
-							}
-							else {
-								$("#currentMoneyBox").text("$" + currentMoney);
-								$("#currentMoneyBox").css("color","gold");
-							}
-
-						console.log("You've won $" + currentMoney);
-						if (whereIsCurrentVowel){
-							console.log("The vowel '" + currentVowel + "' is at position(s): "  + whereIsCurrentVowel);
-							// guessedWordArray = [];
-							// guessedWordArray
-						}
+			else { 
+				$("#statusBox").text("You've already guessed the vowel '" + currentVowel + "'.");
+			}
+		}
+		if (isVowelinWord(currentVowel)) { 
+			if (addVowelCorrectGuess(currentVowel)) {
+				if (whereIsCurrentVowel.length > 1) {
+					var audioElement = document.createElement('audio');
+						audioElement.setAttribute('src', '/img/sounds/applause.wav');
+						audioElement.setAttribute('autoplay', 'autoplay');
+					$("#statusBox").html("Congrats! There are " + whereIsCurrentVowel.length + " " +currentVowel + "'s.");
+					currentMoneyArray.push((whereIsCurrentVowel.length*(-250)));
+					currentMoney = currentMoneyArray.reduce(add,0);
+					if (currentMoney < 0) {
+						$("#currentMoneyBox").text("-$" + (-1 * currentMoney));
+						$("#currentMoneyBox").css("color","red");
 					}
 					else {
-						var audioElement = document.createElement('audio');
-							audioElement.setAttribute('src', '/img/sounds/applause.wav');
-							audioElement.setAttribute('autoplay', 'autoplay');
-						$("#statusBox").html("Congrats! There is one " + currentVowel + ".");
-							console.log(whereIsCurrentVowel);
-							console.log((whereIsCurrentVowel.length*(-250)));
-							currentMoneyArray.push((whereIsCurrentVowel.length*(-250)));
-							console.log(currentMoneyArray);
-							currentMoney = currentMoneyArray.reduce(add,0);
-							if (currentMoney < 0) {
-								$("#currentMoneyBox").text("-$" + (-1 * currentMoney));
-								$("#currentMoneyBox").css("color","red");
-							}
-							else {
-								$("#currentMoneyBox").text("$" + currentMoney);
-								$("#currentMoneyBox").css("color","gold");
-							}
-
-						console.log("You've won $" + currentMoney);
-						if (whereIsCurrentVowel){
-							console.log("The letter '" + currentVowel + "' is at position(s): "  + whereIsCurrentVowel);
-							// guessedWordArray = [];
-							// guessedWordArray;
-						}
+						$("#currentMoneyBox").text("$" + currentMoney);
+						$("#currentMoneyBox").css("color","gold");
 					}
 				}
 				else {
-					$("#statusBox").html("You've already guessed the letter '" + currentVowel);
+					var audioElement = document.createElement('audio');
+						audioElement.setAttribute('src', '/img/sounds/applause.wav');
+						audioElement.setAttribute('autoplay', 'autoplay');
+					$("#statusBox").html("Congrats! There is one " + currentVowel + ".");
+					currentMoneyArray.push((whereIsCurrentVowel.length*(-250)));
+					currentMoney = currentMoneyArray.reduce(add,0);
+					if (currentMoney < 0) {
+						$("#currentMoneyBox").text("-$" + (-1 * currentMoney));
+						$("#currentMoneyBox").css("color","red");
+					}
+					else {
+						$("#currentMoneyBox").text("$" + currentMoney);
+						$("#currentMoneyBox").css("color","gold");
+					}
 				}
 			}
+		}
+		else {
+			$("#statusBox").html("You've already guessed the letter '" + currentVowel);
+		}
+
 		updateVowelGuessLetterBoxes1(whereIsCurrentVowel,guessedWordArray,currentVowel); 
-		
+	
 		setTimeout(function(){
 			updateVowelGuessLetterBoxes2(whereIsCurrentVowel,guessedWordArray,currentVowel);
 		},1500)	;
 
 			
-			$(".wofWheel").css("transition","transform 0s");
-			$(".wofWheel").css("transform","");
+		$(".wofWheel").css("transition","transform 0s");
+		$(".wofWheel").css("transform","");
+		
 		isGameWon();
 		isGameLost();
 
-		};
+	};

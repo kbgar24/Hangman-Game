@@ -126,7 +126,7 @@
 
 	<div class="overlayWin winScreen"></div>
 	<div id="victoryMessage" class="overlay-messageWin winScreen">
-    	<p>You Win!</p>
+    	<p id="victoryP">You Win</p>
     	<button class="startButton">New Game</button>
 	</div>
 
@@ -156,13 +156,11 @@
 			<li>Click on the game wheel to spin it.</li>
 			<li>If the wheel stops on a dollar amount, you must guess a letter. If that letter is in the word, you will win the selected dollar amount times the frequencey of your guessed letter in the word. If your guessed letter is not in the word, you gain nothing and must spin again.</li>
 			<li>If the wheel stops on 'Buy a Vowel', you must guess a vowel. Vowels cost $250. If that vowel is in the word, you will lose $250 times the frequency of your guessed vowel in the word. If your guessed vowel is not in the word, you lose $250 and must spin again. </li>
-			<li>If the wheel stops on "Free Spin", you must spin again. </li>
-			<li>If the wheel stops on "Lose a Turn", you must spin again. </li>
+			<li>If the wheel stops on "Free Spin" or "Lose a Turn", you must spin again. </li>
 			<li>If the wheel stops on "Bankrupt!", you lose all your theretofore won money. If you had less than $0 when you landed on "Bankrupt!", you will still have the same (negative) amount.</li>
-			<li>Any time after spinning the wheel, you may elect to "Solve the Puzzle" instead of guessing a letter or vowel. If your guessed solution is correct, you win the game! If not, you lose $1000 and must spin again.</li>
-			<li>If you guess all the letters in the word you win the game!</li>
-			<li>If you incorrectly guess more than 4 letters, you lose the game!</li>
-			<li>If at any point your total dollar amount is -$1000 or less, you lose the game!</li>
+			<li>Any time after spinning the wheel, you may elect to "Solve the Puzzle" instead of guessing a letter or vowel. If your guessed solution is correct, you receive a $1000 bonus and you win the game! If not, you lose $1000 and must spin again.</li>
+			<li>If you correctly guess all the letters in the word you receive a $1000 bonus and you win the game!</li>
+			<li>If you incorrectly guess more than 4 letters, or if at any point your total dollar amount is -$1000 or less, you lose the game!</li>
 			<li>Good look, and have some wholesome fun! And always remember, you gotta spin it to win it!</li>
 		</ol>
 	</div>
@@ -215,7 +213,7 @@
 		   	})
 		    $(".startButton").click(function(){
 		    	randomWord();	
-		    	startGame();
+		    	setTimeout(startGame,1000);
 	    	})
 		});
 	</script>
