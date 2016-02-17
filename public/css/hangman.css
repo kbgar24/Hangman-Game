@@ -118,7 +118,15 @@
 			/*display: inline-block;*/
 			font-family: sans-serif;
 		}
-		 #statusBox{
+
+		#numIncorrectAnswerBox {
+ 			background-color: #BCC6CC;
+		    background-image: -webkit-linear-gradient(top, #9FA3A6 0%, #2C2D2E 100%);
+		    border-radius: 10px
+
+		}
+
+		/* #statusBox{
 		 	color: black;
 		    font-size: 30px;
 		    padding: 15px;
@@ -131,10 +139,26 @@
 		    box-shadow: inset 0px 6px 20px black;
 		    border-radius: 10px;
 		    width: 460px;
+		}*/
+		#statusBox {
+			color: black;
+		    font-size: 30px;
+		    padding: 15px;
+		    padding-top: 30px;
+		    position: absolute;
+		    right: 10px;
+		    height: 160px;
+		    top: 98px;
+		    background-color: #BCC6CC;
+		    background-image: -webkit-linear-gradient(top, #9FA3A6 0%, #2C2D2E 100%);
+			border: 5px solid black;
+		    border-radius: 10px;
+		    width: 460px;
 		}
 
 		#currentMoneyBox {
-		    background-color: black;
+		   	background-color: #3B3B3B;
+		    background-image: -webkit-linear-gradient(top, #3B3B3B 0%, black 100%);
 		    color: gold;
 		    font-size: 50px;
 		    left: 100px;
@@ -144,7 +168,7 @@
 		    width: 300px;
 		    padding: 20px;
 		    border: 5px solid gold;
-		    font-family: serif;
+		    font-family: baskerville;
 		}
 
 		#incorrectGuessBox {
@@ -155,11 +179,13 @@
 			height: 60px;
 			text-align: center;
 			width: 450px;
-			background-color: red;
+			background-color: #BCC6CC;
+		    background-image: -webkit-linear-gradient(top, #9FA3A6 0%, #2C2D2E 100%);
 			padding-top: 12px;
 			/*float: left;*/
 			/*display: inline-block;*/
 			font-family: sans-serif;
+			border-radius: 10px;
 
 		}
 
@@ -169,7 +195,8 @@
 			width: 795px;
 			padding: 0px;
 			border: 2px solid black;
-			background-color: #000080;
+			background-color: #0000D1;
+			background-image: -webkit-linear-gradient(top,#0000D1 0%, #000059 100%); 
 			height: 270px;
 			box-sizing: border-box;
 		    position: relative;
@@ -187,6 +214,7 @@
 			height: 240px;
 			box-sizing: border-box;
 			background-color: #990066;
+			background-image: -webkit-linear-gradient(top, #BD3991 0%, #59033C 100%);
 
 		}
 		.invisible {
@@ -312,6 +340,7 @@
 		    top: 13%;
 		    left: 35%;
 		    background-color: #e6c300;
+		    background-image: -webkit-linear-gradient(top, #F5D000 0%, #857000 100%);
 		    /* border: 2px solid gold; */
 		    /* box-shadow: inset 0px 1px 10px rgba(255,255,255,.3); */
 		    box-shadow: inset 5px 5px 8px #807D7F, 5px 5px 95px #807D7F;
@@ -327,7 +356,7 @@
     		cursor: pointer;
 		}
 
-		#formDiv{
+		/*#formDiv{
 			display: inline-block;
 		    position: relative;
 		    bottom: -250px;
@@ -342,21 +371,41 @@
 		    padding-top: 20px;
 		    border-radius: 40px;
 		    padding-right: 20px;
+		}*/
+
+		#formDiv {
+			display: inline-block;
+		    position: relative;
+		    bottom: -250px;
+		    left: 130px;
+		    width: 220px;
+		    height: 125px;
+		    opacity: 0.9;
+		    background-color: #2424B5;
+		    background-image: -webkit-linear-gradient(top, #2424B5 0%, #010140 100%);
+		    box-shadow: 2px 2px 5px gray;
+		    border: 2px solid #3A3AB5;
+		    color: white;
+		    font-weight: bolder;
+		    text-align: center;
+		    padding-top: 20px;
+		    border-radius: 10px;
+		    padding-right: 20px;
 		}
 		#formDivGray{
 		    display: inline-block;
 		    position: absolute;
 		    left: 129px;
-		    width: 221px;
+		    width: 225px;
 		    top: 250px;
-		    height: 125px;
+		    height: 129px;
 		    opacity: 0.85;
 		    background-color: gray;
 		    color: white;
 		    font-weight: bolder;
 		    text-align: center;
 		    padding-top: 20px;
-		    border-radius: 40px;
+		    border-radius: 10px;
 		    padding-right: 20px;
 		}
 		#boxesBox {
@@ -388,11 +437,12 @@
 		#wheelStopValue {
 			height: 46px;
 		    width: 165px;
-		    font-size: 25px;
+		    font-size: 22px;
 		    font-weight: bold;
 		    text-align: center;
 		    border: 2px solid #FAEBD7;
 		    background-color: #e6c300;
+		    background-image: -webkit-linear-gradient(top, #E6C300 0%, #A38B07 100%);
 		    position: absolute;
 		    box-sizing: border-box;
 		    display: inline-block;
@@ -401,7 +451,12 @@
 		    padding: 8px;
 		    vertical-align: top;
 		    border-radius: 5px;
+		    font-family: baskerville;
 		}
+		#vowelBox, #inputBox{
+			margin-left: 40px;
+		}
+		
 		#vowelBox, #inputBox, #solveBox {
 			height: 50px;
 			width: 50px;
@@ -414,7 +469,7 @@
 		#vowelButton, #inputButton, #solveButton {
 		    height: 30px;
 		    width: 30px;
-		    background-color: green;
+		    background-color: black;
 		    border-radius: 6px;
 		    cursor: pointer;
 
@@ -423,7 +478,9 @@
 			height: 40px;
 			width: 250px;
 			font-size: 30px;
-			font-style: italic;
+			font-family: baskerville;
+			color: white;
+			font-weight: bolder;
 
 		}
 		#vowelTitle, #inputTitle,{
@@ -451,16 +508,20 @@
 		#solveForm{
 			height: 100px;
 		    width: 350px;
-		    background-color: orange;
+		    background-color: #008000;
+		    background-image: -webkit-linear-gradient(top, #04B004 0%, #012401 100%);
 		    position: absolute;
 		    left: 70px;
 		    top: 430px;
 		    padding: 10px;
 		    text-align: center;
+		    border: 2px solid #008000;
+		    border-radius: 10px;
+		    box-shadow: 2px 2px 5px gray;
 		}
 		#solveFormGray{
-			height: 100px;
-		    width: 350px;
+			height: 105px;
+		    width: 355px;
 		    background-color: gray;
 		    position: absolute;
 		    left: 70px;
@@ -468,11 +529,13 @@
 		    padding: 10px;
 		    text-align: center;
 		    opacity: 0.8;
+		    border-radius: 10px;
 		}
 		#solveForm p {
 			left: 60px;
 			top: 30px;
 			display: inline-block;
+			padding: 10px;
 		}
 
 		#solveForm form {
@@ -499,6 +562,7 @@
 		    background-color:#fff;
 		    opacity:0.7;
 		    z-index:1002;
+		    border-radius: 20px;
 		}
 
 		#beginGameBox{
@@ -520,17 +584,19 @@
 		    opacity: 0.7;
 		    z-index:1001;
 		}
-		.overlay-messageRules{
-		    position: fixed;
-		    top: 20px;
-		    left: 140px;
-		    width: 1100px;
-		    height: 800px;
-		    background-color: #fff;
+		.overlay-messageRules{    
+			position: fixed;
+		    top: 70px;
+		    left: 210px;
+		    width: 900px;
+		    height: 680px;
+		    background-color: #FCE6C9;
 		    opacity: 1;
 		    z-index: 1002;
 		    padding: 10px;
-		    cursor: pointer;	
+		    cursor: pointer;
+		    border-radius: 20px;
+		    font-family: helvetica;
 		}
 		.overlay-messageWin, .overlay-messageLose{
 		    position: fixed;
@@ -566,7 +632,8 @@
 		    display: inline-block;
 		    top: 500px;
 		    left: 1100px;
-		    background-color: #4CAF50;
+		    background-color: #008000;
+		    background-image: -webkit-linear-gradient(top, #04B004 0%, #012401 100%);
 		    border: none;
 		    color: white;
 		    padding: 15px 32px;
@@ -577,11 +644,18 @@
 		    border-radius: 5px;
 		}
 
+		#rulesButton:hover {
+			background-color: #005900;
+		    background-image: -webkit-linear-gradient(top, #005900 0%, #012401 100%);
+		    color: yellow;
+		}
+
 		.startButton {
 		    position: absolute;
 		    border-radius: 10px;
 		    display: inline-block;
-		    background-color: gold;
+		    background-color: #ffd700;
+		    background-image: -webkit-linear-gradient(top, #ffd700 0%, #B09400 100%);
 		    left: 400px;
 		    bottom: 50px;
 		    border: none;
@@ -593,6 +667,12 @@
 		    cursor: pointer;
 		    border-radius: 5px;
 		    width: 150px;
+		}
+
+		.startButton:hover{
+			background-color: #ffd700;
+		    background-image: -webkit-linear-gradient(top, #ffd700 0%, black 100%);
+		    color: white;
 		}
 		#rulesDiv {
 			display: inline-block;
@@ -606,6 +686,7 @@
 		ol {
 			list-style-position: inside;
 		    -webkit-padding-start: 10px;
+		    margin-top: -50px;
 		}
 		.wordwrap { 
 		   white-space: pre-wrap;      /* CSS3 */   
