@@ -87,38 +87,56 @@
 	    <div class="clouds"></div>
 	</div>
 	<div id="mainBox">
-		<div id="wheelBox">
-			<img src="/img/wofWheel90.png" class="wofWheel">
+		<div id="wheelDiv">
+			<div id="wheelBox">
+				<img src="/img/wofWheel90.png" class="wofWheel">
+				<!-- <div class="arrow-left" ></div> -->
+				<div id="wheelStopValue">$150</div>
+		  <div style="
+		    left: 100%;
+		    top: 37%;
+		    height: 30%;
+		    width: 60%;
+		    position: absolute;
+		">
+				<img src="img/glasstriangle.png" style="
+				    transform: rotate(270deg);
+				    /* left: 55%; */
+				    height: 80%;
+				    width: 22%;
+				">
+			</div>
+			</div>
+			
 		</div>
-		<div class="arrow-left"></div>
-		<div id="wheelStopValue"></div>
-		<div id="formDiv" class="grayscale">
-			<div id="vowelTitle" class="vowelStuff grayscale"><p>Guess a Vowel!</p></div>
-			<form autocomplete="off">
-				<input id="vowelBox" class="vowelStuff grayscale" type="text"></input>
-				<input id="vowelButton" class="vowelStuff" type="button"></input>
-			</form>
-			<div id="inputTitle" class="inputStuff"><p>Guess a Letter!</p></div>
-			<form autocomplete="off">
-				<input id="inputBox" class="inputStuff" type="text"></input>
-				<input id="inputButton" class="inputStuff" type="button"></input>
-			</form>
+		<div id="formDiv" class="grayscale inputTitle">
+			<div id="letterGuess" class="guessbox">
+				<form autocomplete="off" class="vowelStuff">
+					<input id="vowelBox" class="vowelStuff grayscale" type="text"></input>
+					<input id="vowelButton" class="vowelStuff" type="button"></input>
+				</form>
+				Guess a Letter!
+				<form autocomplete="off" class="inputStuff">
+					<input id="inputBox" class="inputStuff" type="text"></input>
+					<input id="inputButton" class="inputStuff" type="button"></input>
+				</form>
+			</div>
 		</div>
 		<div id="formDivGray"></div>
-		<div id="solveForm">
-			<div id="solveTitle" class="solveStuff"><p>Solve Puzzle!</p></div>
-			<form autocomplete="off">
-				<input id="solveBox" class="solveStuff" type="text"></input>
-				<input id="solveButton" class="solveStuff" type="button"></input>
-			</form>
+		<div id="solveForm" class="solveTitle">
+			<div id="puzzleGuess" class="guessbox">
+				Solve Puzzle!
+				<form autocomplete="off">
+					<input id="solveBox" class="solveStuff" type="text"></input>
+					<input id="solveButton" class="solveStuff" type="button"></input>
+				</form>
+			</div>
 		</div>
 		<div id="solveFormGray"></div>
 		<div id="currentMoneyBox"></div>
 		<div id="statusBox"></div>
-		<div id="boxesBox">
-			<div id="numIncorrectAnswerBox"></div>
-			<div id="incorrectGuessBox"></div>
-		</div>
+		<div id="numIncorrectAnswerBox"></div>
+		<div id="incorrectGuessBox"></div>
 		<button id="rulesButton">GAME RULES</button>
 	</div>
 
@@ -178,6 +196,7 @@
 			$(".vowelStuff").hide();
 			$(".inputStuff").hide();
 			$(".solveStuff").hide();
+			$(".guessbox").hide();
 			$("#currentMoneyBox").text("$0");
 
 

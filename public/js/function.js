@@ -1,4 +1,5 @@
-	var words = ["oleochemical","extraintestinal","reestablish","trytophan","communicates","associations", "intradistrict", "breviate", "tomfooleries", "courtezan"]
+	var words = ["cookies"]; 
+
 	var currentWord;
 	var currentWordUpCase;
 	var currentWordArray = [];
@@ -12,7 +13,7 @@
 	function pickWord(){
         console.log(currentWord);
         if (typeof currentWord === 'undefined'){
-        	currentWord = "antidisestablishmentarianism";
+        	currentWord = "blackbird";
         }
         currentWordUpCase = currentWord.toUpperCase();
 		currentWordArray = currentWordUpCase.split("");
@@ -26,7 +27,7 @@
 	var correctGuesses = [];
 	var incorrectGuesses = [];
 	var guessedWordArray = [];
-	var spinPossibilities = [15,30,45,60,75,90,105,120,135,150,165,180,195,210,225,240,255,270,285,300,300,300,300,315,330,345,360];
+	var spinPossibilities = [15,30,45,60,75,90,105,120,135,150,165,180,195,210,225,240,255,270,285,315,330,345,360];
     var currentMoneyArray = [];
     var spinValue;
     

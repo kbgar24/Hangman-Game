@@ -46,6 +46,7 @@
 	    function findSpinValue(){
 		    if (isNaN(spinValue)){
 		    	$(".inputStuff").hide();
+		    	$(".guessbox").hide();
 				$(".solveStuff").hide();
 		    	 $("#wheelStopValue").text(spinValue);
 		    	 if(spinValue == "BANKRUPT!"){
@@ -58,6 +59,7 @@
 		    	 		$("#currentMoneyBox").text("$0");
 		    	 	}
 		    	 	$(".inputStuff").hide();
+	    	 		$(".guessbox").hide();
 		    	 	$("#inputBox").val(null);
 		    	 	$(".solveStuff").hide();
 		    	 	$(".wofWheel").css("transition","transform 0s");
@@ -65,18 +67,23 @@
 
 		    	 }
 		    	 if(spinValue == "Buy a Vowel!"){
+	    	 		$(".guessbox").show();
 		    	 	$(".vowelStuff").show();
 		    	 	$(".inputStuff").hide();
+		    	 	$("#formDiv").text("Guess a Vowel!");
 		    	 	$(".solveStuff").show();
 		    	 	$("#inputBox").val(null);
+		    	 	$(".vowelStuff").show();
 		    	}
 		    	if(spinValue == "Free Spin!"){
 		    	 	$(".inputStuff").hide();
+	    	 		$(".guessbox").hide();
 					$(".solveStuff").hide();
 					$("#inputBox").val(null);
 		    	}
 		    	if(spinValue == "Lose a Turn!") {
 		    	 	$(".inputStuff").hide();
+	    	 		$(".guessbox").hide();
 					$(".solveStuff").hide();
 					$("#inputBox").val(null);
 		    	}
@@ -85,6 +92,7 @@
 		    	$("#wheelStopValue").text("$" + spinValue)
 	    		$(".inputStuff").show();
 				$(".solveStuff").show();
+				$(".guessbox").show();
 		    }
 		};
 		setTimeout(findSpinValue,4400);
@@ -96,6 +104,7 @@
 		$(".inputStuff").hide();
 		$(".solveStuff").hide();
 		$(".vowelStuff").hide();
+		$(".guessbox").hide();
 		if ($("#solveBox").val() == currentWord){
 			isGameWon();
 		}
@@ -123,6 +132,7 @@
 	function inputClick(){
 			$(".inputStuff").hide();
 			$(".solveStuff").hide();
+			$(".guessbox").hide();
 			var currentLetter = isInputValid();
 			var whereIsCurrentLetter = findCurrentLetterInWord(currentWordArray, currentLetter);
 			if (!isLetterinWord(currentLetter) && currentLetter) {
@@ -197,8 +207,10 @@
 	};
 	
 	function vowelClick(){
+		$("#formDiv").text("Guess a Letter!");
 		$(".vowelStuff").hide();
 		$(".solveStuff").hide();
+		$(".guessbox").hide();
 		var currentVowel = isVowelValid();
 		var whereIsCurrentVowel = findCurrentVowelInWord(currentWordArray, currentVowel);
 		if (!isVowelinWord(currentVowel) && currentVowel) {

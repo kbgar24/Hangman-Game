@@ -123,23 +123,15 @@
  			background-color: #BCC6CC;
 		    background-image: -webkit-linear-gradient(top, #9FA3A6 0%, #2C2D2E 100%);
 		    border-radius: 10px
+		    right:2%;
+		    width: 35%;
+		    position: absolute;
+		    top: 48%;
+		    right: 2%;
+		    border-radius: 10px;
 
 		}
 
-		/* #statusBox{
-		 	color: black;
-		    font-size: 30px;
-		    padding: 15px;
-		    padding-top: 30px;
-		    position: absolute;
-		    right: 10px;
-		    height: 160px;
-		    top: 98px;
-		    background-color: #BCC6CC;
-		    box-shadow: inset 0px 6px 20px black;
-		    border-radius: 10px;
-		    width: 460px;
-		}*/
 		#statusBox {
 			color: black;
 		    font-size: 30px;
@@ -154,6 +146,9 @@
 			border: 5px solid black;
 		    border-radius: 10px;
 		    width: 460px;
+		    width:35%;
+		    top: 8%;
+		    right:2%;
 		}
 
 		#currentMoneyBox {
@@ -169,6 +164,11 @@
 		    padding: 20px;
 		    border: 5px solid gold;
 		    font-family: baskerville;
+		    width: 22.5%;
+		    height: 10%;
+		    left: 2%;
+		    top: 10%;
+
 		}
 
 		#incorrectGuessBox {
@@ -183,9 +183,13 @@
 		    background-image: -webkit-linear-gradient(top, #9FA3A6 0%, #2C2D2E 100%);
 			padding-top: 12px;
 			/*float: left;*/
-			/*display: inline-block;*/
+			/*display: indline-block;*/
 			font-family: sans-serif;
 			border-radius: 10px;
+			top: 54%;
+			width: 35%;
+			position: absolute;
+			right:2%;
 
 		}
 
@@ -333,12 +337,12 @@
 		}
 
 		#wheelBox {
-			width: 400px;
+			width: 25%;
 			display: inline-block;
 		    position: absolute;
 		     position: absolute;
 		    top: 13%;
-		    left: 35%;
+		    left: 33%;
 		    background-color: #e6c300;
 		    background-image: -webkit-linear-gradient(top, #F5D000 0%, #857000 100%);
 		    /* border: 2px solid gold; */
@@ -348,7 +352,7 @@
 		    border-radius: 6px;
 		}
 		#wheelBox img {
-			height: 400px;
+			width: 100%;
 			/*width: 320px;*/
 			display: inline-block;
     		/*-webkit-transition: -webkit-transform 2s ease-out;*/
@@ -391,14 +395,19 @@
 		    padding-top: 20px;
 		    border-radius: 10px;
 		    padding-right: 20px;
+		    width: 20%;
+		    height: 12%;
+		    left: 2%;
+		    top: 22%;
+		    font-size: 1.7rem
 		}
 		#formDivGray{
 		    display: inline-block;
 		    position: absolute;
-		    left: 129px;
-		    width: 225px;
-		    top: 250px;
-		    height: 129px;
+		    width: 20.5%;
+		    height: 12.5%;
+		    left: 2%;
+		    top: 25%;
 		    opacity: 0.85;
 		    background-color: gray;
 		    color: white;
@@ -431,6 +440,9 @@
 		    left: 875px;
 		    box-shadow: 3px 3px 50px black;
 		    border-radius: 5px;
+		    top: 45%;
+		    left: 95%;
+		    position: absolute;
 
 		}
 
@@ -452,6 +464,12 @@
 		    vertical-align: top;
 		    border-radius: 5px;
 		    font-family: baskerville;
+		    height: 12%;
+		    width: 50%;
+		    left: 119%;
+		    top: 43%;
+		    font-size: 1.5vw;
+		    padding-top: 3%
 		}
 		#vowelBox, #inputBox{
 			margin-left: 40px;
@@ -465,6 +483,7 @@
 		}
 		#solveBox{
 			width: 300px;
+			width: 80%;
 		}
 		#vowelButton, #inputButton, #solveButton {
 		    height: 30px;
@@ -474,15 +493,28 @@
 		    cursor: pointer;
 
 		}
-		#vowelTitle p, #inputTitle p, #solveTitle p{
+		#vowelTitle, #inputTitle, #solveTitle {
 			height: 40px;
 			width: 250px;
-			font-size: 30px;
+			font-size: 2vw;
 			font-family: baskerville;
+			padding-left: 10%
 			color: white;
 			font-weight: bolder;
 
 		}
+
+		.solveTitle, .inputTitle {
+			color: white;
+			font-family: baskerville;
+			font-weight: bolder;
+			font-size: 1.7rem;
+		}
+
+		#solveTitle {
+			padding-left: 5%
+		}
+
 		#vowelTitle, #inputTitle,{
 			vertical-align: top;
 			position: absolute;
@@ -499,6 +531,7 @@
 		.topStuff {
 			position: relative;
 			z-index: 5;
+			background-color: black;
 		}
 
 		.image-blurred-edge {
@@ -518,14 +551,23 @@
 		    border: 2px solid #008000;
 		    border-radius: 10px;
 		    box-shadow: 2px 2px 5px gray;
+		    height: 12%;
+		    width: 20%;
+		    left: 2%;
+		    top: 45%;
+	    	color: white;
+			font-family: baskerville;
+			font-weight: bolder
+			font-size: 1.7rem;
+
 		}
 		#solveFormGray{
-			height: 105px;
-		    width: 355px;
 		    background-color: gray;
 		    position: absolute;
-		    left: 70px;
-		    top: 430px;
+		    height: 12.5%;
+		    width: 20.5%;
+		    left: 2%;
+		    top: 45%;
 		    padding: 10px;
 		    text-align: center;
 		    opacity: 0.8;
@@ -630,8 +672,7 @@
 		    position: absolute;
 		    border-radius: 10px;
 		    display: inline-block;
-		    top: 500px;
-		    left: 1100px;
+		/*a*/
 		    background-color: #008000;
 		    background-image: -webkit-linear-gradient(top, #04B004 0%, #012401 100%);
 		    border: none;
@@ -642,6 +683,9 @@
 		    font-size: 16px;
 		    cursor: pointer;
 		    border-radius: 5px;
+		    top: 61%;
+		    right: 11%;
+		    width: 15%;
 		}
 
 		#rulesButton:hover {
@@ -688,9 +732,22 @@
 		    -webkit-padding-start: 10px;
 		    margin-top: -50px;
 		}
+		#rulesText {
+			left: 10%;
+			width: 80%;
+		}
 		.wordwrap { 
 		   white-space: pre-wrap;      /* CSS3 */   
 		   white-space: -moz-pre-wrap; /* Firefox */   
 		   white-space: -o-pre-wrap;   /* Opera 7 */    
 		   word-wrap: break-word;      /* IE */
+		}
+
+		@media(max-width: 1349px) {
+			#wofIMG {
+				left: 25%;
+			}
+			#outsideCurrentWordBox{
+				left: 15%c;
+			}
 		}
