@@ -711,6 +711,13 @@
 		    cursor: pointer;
 		    border-radius: 5px;
 		    width: 150px;
+	        position: fixed;
+		    left: 45%;
+		    height: 10%;
+		    font-size: 1.2vw;
+		    top: 80%;
+		    width: 10%;
+		    font-weight: bold;
 		}
 
 		.startButton:hover{
@@ -743,6 +750,9 @@
 		   word-wrap: break-word;      /* IE */
 		}
 
+		body, html {
+			background-color: black
+		}
 		@media(max-width: 1349px) {
 			#wofIMG {
 				left: 25%;
