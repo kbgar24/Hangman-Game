@@ -14,7 +14,7 @@
 		    margin: 0;
 		    padding: 0;
 		}
-
+/*
 		@keyframes move-twink-back {
 		    from {background-position:0 0;}
 		    to {background-position:-10000px 5000px;}
@@ -48,7 +48,7 @@
 		    from {background-position: 0;}
 		    to {background-position:10000px 0;}
 		}
-
+*/
 		.stars, .twinkling, .clouds {
 		  position:	absolute;
 		  top:0;
@@ -748,6 +748,6 @@
 				left: 25%;
 			}
 			#outsideCurrentWordBox{
-				left: 15%c;
+				left: 15%;
 			}
 		}
